@@ -7,7 +7,7 @@ target 'RNPhotoEditor' do
   # use_frameworks!
 
   # Pods for RNPhotoEditor
-  pod 'iOSPhotoEditor', :git => 'https://github.com/BrickmakersGmbH/photo-editor'
+  pod 'iOSPhotoEditor', :git => 'https://github.com/BrickmakersGmbH/photo-editor, :branch => 'develop'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
