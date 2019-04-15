@@ -16,11 +16,16 @@ RCTResponseSenderBlock _onCancelEditing = nil;
 
 - (void)doneEditingWithImage:(UIImage *)image {
     if (_onDoneEditing == nil) return;
+    // Save image.
+//    NSURL *tmpDirURL = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
+//    NSURL *fileURL = [[tmpDirURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]]] URLByAppendingPathExtension:@"jpg"];
+//
+//    [UIImageJPEGRepresentation(image, 0.8) writeToURL:fileURL atomically:YES];
     
     // Save image.
     [UIImagePNGRepresentation(image) writeToFile:_editImagePath atomically:YES];
     
-    _onDoneEditing(@[]);
+    _onDoneEditing(@[[fileURL absoluteString]]);
 }
 
 - (void)canceledEditing {
@@ -68,7 +73,7 @@ RCT_EXPORT_METHOD(Edit:(nonnull NSDictionary *)props onDone:(RCTResponseSenderBl
             [passHiddenControls addObject: [[NSString alloc] initWithString: hiddenControl]];
         }
         
-        photoEditor.hiddenControls = passHiddenControls;
+//        photoEditor.hiddenControls = passHiddenControls;
 
         //Process Colors
         NSArray *colors = [props objectForKey: @"colors"];
