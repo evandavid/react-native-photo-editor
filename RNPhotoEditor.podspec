@@ -20,5 +20,8 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency "React"
-  #s.dependency "others"
+  s.subspec 'iOSPhotoEditor' do |df|
+    df.source_files = "ios/**/*.swift"
+    df.swift_version = '4.2'
+  end
 end
